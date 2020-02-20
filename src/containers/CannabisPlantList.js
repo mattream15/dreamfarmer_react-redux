@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import CannabisPlantItem from '../components/CannabisPlantItem'
 import { connect } from 'react-redux'
+import { fetchCannabisPlants } from '../actions/index'
 
 export class CannabisPlantList extends Component {
+  componentDidMount(){
+    this.props.fetchCannabisPlants()
+  }
+
   render() {
     const cannabisPlants = this.props.cannabisPlants.map(( cannabisPlant, i ) => <CannabisPlantItem key={i} cannabisPlant={ cannabisPlant } />)
     return (
@@ -23,4 +28,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(CannabisPlantList)
+export default connect(mapStateToProps, { fetchCannabisPlants })(CannabisPlantList)

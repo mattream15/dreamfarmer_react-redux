@@ -8,18 +8,18 @@ export class CannabisPlantShow extends Component {
     let cannabisPlant = props.cannabisPlants.find( cannabisPlant => cannabisPlant.id === paramsId);
 
     this.state = {
-      cannabisPlant: cannabisPlant ? cannabisPlant : { species: 'N/A', varietyName: 'N/A', numberOfSeeds: 'N/A'}
+      cannabisPlant: cannabisPlant ? cannabisPlant : { species: 'N/A', name: 'N/A', seeds: 'N/A'}
     }
   }
 
 
   render() {
-    const { species, varietyName, numberOfSeeds } = this.state.cannabisPlant;
+    const { species, name, seeds } = this.state.cannabisPlant;
     return (
       <div>
         <h3>{ species }</h3>
-        <p>Variety Name: { varietyName }</p>
-        <p>Number Of Seeds: { numberOfSeeds }</p>
+        <p>Variety Name: { name }</p>
+        <p>Number Of Seeds: { seeds }</p>
       </div>
     )
   }
