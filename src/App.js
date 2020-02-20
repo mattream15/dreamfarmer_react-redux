@@ -8,14 +8,14 @@ import CannabisPlantShow from './containers/CannabisPlantShow';
 
 class App extends Component {
   
-  constructor() {
-    super()
+  //constructor() {
+    //super()
 
     // this.state = {
     //   id: 0,
     //   cannabisPlants: []
     //}
-  }
+  //}
 
   // addCannabisPlant = cannabisPlant => {
   //   cannabisPlant.id = this.state.id + 1
