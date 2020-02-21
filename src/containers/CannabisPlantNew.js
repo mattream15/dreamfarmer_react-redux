@@ -10,11 +10,10 @@ export class CannabisPlantNew extends Component {
     this.state = {
       species: '',
       name: '',
+      options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
       seeds: ''
     }
   }
-
-
 
   handleChange = event => {
     this.setState({
@@ -24,9 +23,6 @@ export class CannabisPlantNew extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // add the pet
-    //this.props.addCannabisPlant( this.state );
-    // redirect to /pets
     this.props.history.push('/cannabisPlants');
   }
 
@@ -36,7 +32,7 @@ export class CannabisPlantNew extends Component {
       <h3>Create Cannabis Plant</h3>
         <div className="select-species"></div>
         <label for="species">Type: </label>                
-          <select id="species">
+          <select id="species" onChange = { this.handleSpeciesChange }>
             <option>Sativa</option>
             <option>Indica</option>
             <option>Hybrid</option>
@@ -44,7 +40,7 @@ export class CannabisPlantNew extends Component {
       <div className="select-name"></div>        
       <label for="name">Variety Name: </label>
           <select id="name">
-            { handleSpeciesChange }
+            { this.renderOptions() }
           </select>
       <div className="select-seeds"></div>
       <label for="seeds">Number of Seeds: </label>
@@ -66,36 +62,26 @@ export class CannabisPlantNew extends Component {
       </form>
     )
   }
-}
 
-handleSpeciesChange = event => { 
-  this.newCannabisPlantSpecies = document.getElementById('species')
-  this.newCannabisPlantSpecies.addEventListener('change', this.handleSpeciesChange.bind(this))
-  this.newCannabisPlantVarietyName = document.getElementById('name')       
-  if (event.target.value === 'Sativa') {
-      const sativaOptions = ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie']
-      const newOptions = sativaOptions.map(option => `<option>${option}</option>`)
-      this.newCannabisPlantVarietyName.innerHTML = newOptions.join('')
+  handleSpeciesChange = event => {
+    if (event.target.value === 'Sativa') {
+      this.setState({
+        options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
+      }) 
   } else if (event.target.value === 'Indica') {
-      const indicaOptions = ['Strawberry Banana', 'Dark Star', 'Kosher Kush', 'Sunset Sherbert', 'Northern Lights']
-      const newOptions = indicaOptions.map(option => `<option>${option}</option>`)
-      this.newCannabisPlantVarietyName.innerHTML = newOptions.join('')
+      this.setState({
+        options:['Strawberry Banana', 'Dark Star', 'Kosher Kush', 'Sunset Sherbert', 'Northern Lights'],
+      })
   } else {
-      const hybridOptions = ['Cannatonic', 'Three Blue Kings', 'Larry Bird Kush', 'White Widow', 'Pineapple Express']
-      const newOptions = hybridOptions.map(option => `<option>${option}</option>`)
-      this.newCannabisPlantVarietyName.innerHTML = newOptions.join('')
+    this.setState({
+      options:['Cannatonic', 'Three Blue Kings', 'Larry Bird Kush', 'White Widow', 'Pineapple Express'],
+    })    
   }
 }
 
-// longer version of mapping dispatch to props
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     addCannabisPlant: cannabisPlant => dispatch(addCannabisPlant(cannabisPlant))
-//   }
-// }
+  renderOptions() {
+    return this.state.options.map(option => <option>${option}</option>)
+  }
+}
 
-// export default connect(null, mapDispatchToProps)(CannabisPlantNew)
-
-
-// syntactic sugar
 export default connect(null, { addCannabisPlant })(CannabisPlantNew)
