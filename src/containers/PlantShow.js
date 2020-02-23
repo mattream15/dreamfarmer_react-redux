@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 
-export class CannabisPlantShow extends Component {
+export class PlantShow extends Component {
   constructor(props) {
     super(props);
 
     let paramsId = parseInt(this.props.match.params.id, 10)
-    let cannabisPlant = props.cannabisPlants.find( cannabisPlant => cannabisPlant.id === paramsId);
+    let plant = props.plants.find( plant => plant.id === paramsId);
 
     this.state = {
-      cannabisPlant: cannabisPlant ? cannabisPlant : { species: 'N/A', name: 'N/A', seeds: 'N/A'}
+      plant: plant ? plant : { species: 'N/A', name: 'N/A', seeds: 'N/A'}
     }
   }
 
 
   render() {
-    const { species, name, seeds } = this.state.cannabisPlant;
+    const { species, name, seeds } = this.state.plant;
     return (
       <div>
         <h3>{ species }</h3>
@@ -25,7 +25,7 @@ export class CannabisPlantShow extends Component {
   }
 }
 
-export default CannabisPlantShow
+export default PlantShow
 
 
 

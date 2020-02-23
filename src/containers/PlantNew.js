@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import { addCannabisPlant } from '../actions/index'
+import { addPlant } from '../actions/index'
 import { connect } from 'react-redux'
 
-export class CannabisPlantNew extends Component {
+export class PlantNew extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
       species: '',
-      name: '',
-      options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
+      name: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
+      //options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
       seeds: ''
     }
   }
@@ -23,7 +23,8 @@ export class CannabisPlantNew extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.history.push('/cannabisPlants');
+    this.props.addPlant ( this.state )
+    this.props.history.push('/plants');
   }
 
   render() {
@@ -31,20 +32,20 @@ export class CannabisPlantNew extends Component {
       <form onSubmit={ this.handleSubmit }>
       <h3>Create Cannabis Plant</h3>
         <div className="select-species"></div>
-        <label for="species">Type: </label>                
+        <label htmlFor="species">Species: </label>          
           <select id="species" onChange = { this.handleSpeciesChange }>
             <option>Sativa</option>
             <option>Indica</option>
             <option>Hybrid</option>
           </select>
       <div className="select-name"></div>        
-      <label for="name">Variety Name: </label>
-          <select id="name">
+      <label htmlFor="name">Variety Name: </label>          
+        <select id="name">
             { this.renderOptions() }
           </select>
       <div className="select-seeds"></div>
-      <label for="seeds">Number of Seeds: </label>
-          <select id="seeds" >
+      <label htmlFor="seeds">Seeds: </label>          
+        <select id="seeds" >
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -66,22 +67,22 @@ export class CannabisPlantNew extends Component {
   handleSpeciesChange = event => {
     if (event.target.value === 'Sativa') {
       this.setState({
-        options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
+        name: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
       }) 
   } else if (event.target.value === 'Indica') {
       this.setState({
-        options:['Strawberry Banana', 'Dark Star', 'Kosher Kush', 'Sunset Sherbert', 'Northern Lights'],
+        name:['Strawberry Banana', 'Dark Star', 'Kosher Kush', 'Sunset Sherbert', 'Northern Lights'],
       })
   } else {
     this.setState({
-      options:['Cannatonic', 'Three Blue Kings', 'Larry Bird Kush', 'White Widow', 'Pineapple Express'],
+      name:['Cannatonic', 'Three Blue Kings', 'Larry Bird Kush', 'White Widow', 'Pineapple Express'],
     })    
   }
 }
 
   renderOptions() {
-    return this.state.options.map(option => <option>${option}</option>)
+    return this.state.name.map(varietyName => <option>{varietyName}</option>)
   }
 }
 
-export default connect(null, { addCannabisPlant })(CannabisPlantNew)
+export default connect(null, { addPlant })(PlantNew)

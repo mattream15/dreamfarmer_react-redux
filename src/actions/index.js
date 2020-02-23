@@ -1,40 +1,40 @@
-export const addCannabisPlant = cannabisPlant => {
+export const addPlant = plant => {
   return (dispatch) => {
-    return fetch('http://localhost:3000/cannabis_plants', {
+    return fetch('http://localhost:3000/plants', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({cannabisPlant: cannabisPlant})
+      body: JSON.stringify({plant: plant})
     })
     .then(resp => resp.json())
-    .then(cannabisPlant => {
-      dispatch({type: "ADD_CANNABIS_PLANT", payload: cannabisPlant})
+    .then(plant => {
+      dispatch({type: "ADD_PLANT", payload: plant})
     })
   }
 } 
 
-export const removeCannabisPlant = cannabisPlantId => {
+export const removePlant = plantId => {
   return (dispatch) => {
-    return fetch(`http://localhost:3000/cannabisPlants/${cannabisPlantId}`, {
+    return fetch(`http://localhost:3000/plants/${plantId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
     })
     .then(resp => resp.json())
-    .then(cannabisPlant => {
-      dispatch({type: "REMOVE_CANNABIS_PLANT", payload: cannabisPlant.id})
+    .then(plant => {
+      dispatch({type: "REMOVE_PLANT", payload: plant.id})
     })
   }
 }
 
-  export const fetchCannabisPlants = () => {
+  export const fetchPlants = () => {
     return (dispatch) => {
-      return fetch('http://localhost:3000/cannabis_plants')
+      return fetch('http://localhost:3000/plants')
       .then(resp => resp.json())
-      .then(cannabisPlants => {
-        dispatch({type: "SET_CANNABIS_PLANTS", payload: cannabisPlants})
+      .then(plants => {
+        dispatch({type: "SET_PLANTS", payload: plants})
       })
     }
   }

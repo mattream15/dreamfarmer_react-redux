@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './containers/Home';
-import CannabisPlantNew from './containers/CannabisPlantNew';
+import PlantNew from './containers/PlantNew';
 import NavBar from './components/NavBar';
-import CannabisPlantList from './containers/CannabisPlantList';
-import CannabisPlantShow from './containers/CannabisPlantShow';
+import PlantList from './containers/PlantList';
+import PlantShow from './containers/PlantShow';
 
 class App extends Component {
   
@@ -17,15 +17,14 @@ class App extends Component {
     //}
   //}
 
-  // addCannabisPlant = cannabisPlant => {
-  //   cannabisPlant.id = this.state.id + 1
+  addPlant = plant => {
+     plant.id = this.state.id + 1
 
-  //   this.setState({
-  //     cannabisPlants: [...this.state.cannabisPlants, cannabisPlant],
-  //     id: this.state.id + 1
-  //   })
-  // }
-  
+     this.setState({
+       plants: [...this.state.plants, plant],
+       id: this.state.id + 1
+     })
+   }
   
  render() {
    return (
@@ -34,9 +33,9 @@ class App extends Component {
        <div className="container">
         <Switch>
           <Route exact path="/" component={ Home } />
-          <Route exact path="/cannabisPlants/new" render={ props => <CannabisPlantNew {...props} addCannabisPlant={this.addCannabisPlant}/>} />
-          <Route exact path="/cannabisPlants" component={ CannabisPlantList } />
-          <Route exact path="/cannabisPlants/:id" render={ props => <CannabisPlantShow {...props} cannabisPlants={this.state.cannabisPlants}/>} />
+          <Route exact path="/plants/new" render={ props => <PlantNew {...props} addPlant={this.addPlant}/>} />
+          <Route exact path="/plants" component={ PlantList } />
+          <Route exact path="/plants/:id" render={ props => <PlantShow {...props} plants={this.state.plants}/>} />
         </Switch>
        </div>
      </Router>

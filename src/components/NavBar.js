@@ -8,8 +8,8 @@ export class NavBar extends Component {
         <div className="container">
           <NavLink to="/" className="brand-logo">DreamFarmer</NavLink>
           <ul className="right">
-            <li><NavLink to="/cannabisPlants/new">Create Cannabis Plants</NavLink></li>
-            <li><NavLink to="/cannabisPlants">Cannabis Plants List</NavLink></li>
+            <li><NavLink to="/plants/new">Create Cannabis Plants</NavLink></li>
+            <li><NavLink to="/plants">Cannabis Plants List</NavLink></li>
           </ul>
         </div>
       </nav>
