@@ -1,51 +1,61 @@
 import React, { Component } from 'react'
 import { addPlant } from '../actions/index'
 import { connect } from 'react-redux'
-
+const INITIAL_STATE = {
+  species: 'Sativa',     
+  options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
+  seeds: '1',
+  name: 'Ghost Train Haze'
+}
 export class PlantNew extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      species: '',
-      name: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
-      //options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
-      seeds: ''
-    }
+    this.state = INITIAL_STATE
   }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
+  // handleChange = event => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
 
   handleSubmit = event => {
     event.preventDefault();
     this.props.addPlant ( this.state )
+    this.setState(INITIAL_STATE)
     this.props.history.push('/plants');
+    
+  }
+
+  handleSeedChange = e => {
+    this.setState({seeds: e.target.value})
+  }
+
+  handleVarietyNameChange = e => {
+    this.setState({name: e.target.value})
   }
 
   render() {
     return (
       <form onSubmit={ this.handleSubmit }>
       <h3>Create Cannabis Plant</h3>
-        <div className="select-species"></div>
+        <div className="body"></div>
         <label htmlFor="species">Species: </label>          
-          <select id="species" onChange = { this.handleSpeciesChange }>
+          <select id="species" onChange = { this.handleSpeciesChange } value={this.state.species}>
             <option>Sativa</option>
             <option>Indica</option>
             <option>Hybrid</option>
           </select>
-      <div className="select-name"></div>        
+      <div className="body"></div>        
       <label htmlFor="name">Variety Name: </label>          
-        <select id="name">
+        <select id="name" onChange={this.handleVarietyNameChange}>
             { this.renderOptions() }
           </select>
-      <div className="select-seeds"></div>
+      <div className="body"></div>
       <label htmlFor="seeds">Seeds: </label>          
-        <select id="seeds" >
+        <select id="seeds" onChange={this.handleSeedChange}>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -65,23 +75,24 @@ export class PlantNew extends Component {
   }
 
   handleSpeciesChange = event => {
+    this.setState({species: event.target.value})
     if (event.target.value === 'Sativa') {
       this.setState({
-        name: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
-      }) 
+        options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
+      }, () => (this.setState({name: this.state.name[0]}))) 
   } else if (event.target.value === 'Indica') {
       this.setState({
-        name:['Strawberry Banana', 'Dark Star', 'Kosher Kush', 'Sunset Sherbert', 'Northern Lights'],
-      })
+        options:['Strawberry Banana', 'Dark Star', 'Kosher Kush', 'Sunset Sherbert', 'Northern Lights'],
+      }, () => (this.setState({name: this.state.name[0]})) )
   } else {
     this.setState({
-      name:['Cannatonic', 'Three Blue Kings', 'Larry Bird Kush', 'White Widow', 'Pineapple Express'],
-    })    
+      options:['Cannatonic', 'Three Blue Kings', 'Larry Bird Kush', 'White Widow', 'Pineapple Express'],
+    }, () => (this.setState({name: this.state.name[0]})))    
   }
 }
 
   renderOptions() {
-    return this.state.name.map(varietyName => <option>{varietyName}</option>)
+    return this.state.options.map(varietyName => (<option key= {varietyName}> {varietyName}</option>))  
   }
 }
 

@@ -13,7 +13,7 @@ export class PlantList extends Component {
     return (
       <div>
         <h3>Cannabis Plant List</h3>
-        <ul className="collection">
+        <ul className="body">
           { plants }
         </ul>
       </div>

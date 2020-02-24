@@ -5,7 +5,6 @@ import plants from './PlantsReducer'
 
 
 export default combineReducers({
-  // cannabisPlants:cannabisPlants this is the same as
   plants
   //growRooms,
   //users

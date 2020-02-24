@@ -8,14 +8,14 @@ import PlantShow from './containers/PlantShow';
 
 class App extends Component {
   
-  //constructor() {
-    //super()
+  constructor() {
+    super()
 
-    // this.state = {
-    //   id: 0,
-    //   cannabisPlants: []
-    //}
-  //}
+     this.state = {
+       id: 0,
+       cannabisPlants: []
+    }
+  }
 
   addPlant = plant => {
      plant.id = this.state.id + 1
@@ -30,7 +30,7 @@ class App extends Component {
    return (
      <Router>
        <NavBar />
-       <div className="container">
+       <div className="App">
         <Switch>
           <Route exact path="/" component={ Home } />
           <Route exact path="/plants/new" render={ props => <PlantNew {...props} addPlant={this.addPlant}/>} />
