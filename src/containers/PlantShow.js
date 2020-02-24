@@ -14,12 +14,13 @@ export class PlantShow extends Component {
 
 
   render() {
-    const { species, name, seeds } = this.state.plant;
+    const { species, name, seeds, roomId } = this.state.plant;
     return (
       <div>
         <h3>{ species }</h3>
         <p>Variety Name: { name }</p>
         <p>Number Of Seeds: { seeds }</p>
+        <p>Grow Room: { roomId } </p>
       </div>
     )
   }

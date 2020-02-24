@@ -8,6 +8,7 @@ const plantItem = ({ plant, removePlant }) => {
       Cannabis Plant: {plant.species}<br />
       Variety Name: { plant.name } <br />
       Number of Seeds: { plant.seeds } <br />
+      Grow Room: { plant.room.name } <br />
     <button onClick={ () => removePlant(plant.id)}>Recycle Cannabis Plant?</button>
     </li>
     );

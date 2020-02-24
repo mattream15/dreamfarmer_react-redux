@@ -5,6 +5,9 @@ import PlantNew from './containers/PlantNew';
 import NavBar from './components/NavBar';
 import PlantList from './containers/PlantList';
 import PlantShow from './containers/PlantShow';
+import RoomList from './containers/RoomList';
+import RoomShow from './containers/RoomShow';
+
 
 class App extends Component {
   
@@ -36,6 +39,8 @@ class App extends Component {
           <Route exact path="/plants/new" render={ props => <PlantNew {...props} addPlant={this.addPlant}/>} />
           <Route exact path="/plants" component={ PlantList } />
           <Route exact path="/plants/:id" render={ props => <PlantShow {...props} plants={this.state.plants}/>} />
+          <Route exact path="/rooms" component={ RoomList } />
+          <Route exact path="/rooms/:id" render={ props => <RoomShow {...props} rooms={this.state.rooms}/>} />
         </Switch>
        </div>
      </Router>
