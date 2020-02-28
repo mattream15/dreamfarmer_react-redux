@@ -8,21 +8,16 @@ export class RoomShow extends Component {
     let room = props.rooms.find( room => room.id === paramsId);
 
     this.state = {
-      room: room ? room : { name: 'N/A', light: 'N/A', nutrient: 'N/A', humidity: 'N/A', temperature: 'N/A', pH: 'N/A'}
+      room: room ? room : { name: 'N/A'}
     }
   }
 
 
   render() {
-    const { name, light, nutrient, humidity, temperature, pH } = this.state.room;
+    const { name } = this.state.room;
     return (
       <div>
         <h3>{ name }</h3>
-        <p>Light Source: { light }</p>
-        <p>Nutrient: { nutrient }</p>
-        <p>Relative Humidity: { humidity }</p>
-        <p>Temperature: { temperature }</p>
-        <p>pH: { pH }</p>
       </div>
     )
   }

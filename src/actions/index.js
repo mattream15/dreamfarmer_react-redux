@@ -34,7 +34,6 @@ export const removePlant = plantId => {
       return fetch('http://localhost:3000/plants')
       .then(resp => resp.json())
       .then(plants => {
-        plants.to_json(include: [:room])
         dispatch({type: "SET_PLANTS", payload: plants})
       })
     }
