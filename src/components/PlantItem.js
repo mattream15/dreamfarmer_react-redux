@@ -4,11 +4,11 @@ import { removePlant } from '../actions/index'
 
 const plantItem = ({ plant, removePlant }) => {
     return (
-    <li className="collection-item">
+    <li className="body">
       Cannabis Plant: {plant.species}<br />
       Variety Name: { plant.name } <br />
       Number of Seeds: { plant.seeds } <br />
-      Grow Room: { plant.room.name } <br />
+      Grow Room: { plant.roomId } <br />
     <button onClick={ () => removePlant(plant.id)}>Recycle Cannabis Plant?</button>
     </li>
     );

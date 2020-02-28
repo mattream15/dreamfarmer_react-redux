@@ -8,7 +8,7 @@ export class PlantShow extends Component {
     let plant = props.plants.find( plant => plant.id === paramsId);
 
     this.state = {
-      plant: plant ? plant : { species: 'N/A', name: 'N/A', seeds: 'N/A'}
+      plant: plant ? plant : { species: 'N/A', name: 'N/A', seeds: 'N/A', roomId: 'N/A'}
     }
   }
 

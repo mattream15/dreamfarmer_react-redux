@@ -6,7 +6,6 @@ const INITIAL_STATE = {
   options: ['Ghost Train Haze', 'Sour Diesel', 'Casey Jones', 'Blue Dream', 'Maui Wowie'],
   seeds: '1',
   name: 'Ghost Train Haze'
-  roomId: 'Ghost Train Haze Room'
 }
 export class PlantNew extends Component {
 
@@ -15,12 +14,6 @@ export class PlantNew extends Component {
 
     this.state = INITIAL_STATE
   }
-
-  // handleChange = event => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -35,7 +28,10 @@ export class PlantNew extends Component {
   }
 
   handleVarietyNameChange = e => {
-    this.setState({name: e.target.value})
+    this.setState({
+      name: e.target.value,
+      roomId: `${e.target.value} Room`
+    })
   }
 
   render() {
@@ -51,12 +47,12 @@ export class PlantNew extends Component {
           </select>
       <div className="body"></div>        
       <label htmlFor="name">Variety Name: </label>          
-        <select id="name" onChange={this.handleVarietyNameChange}>
+        <select id="name" onChange={this.handleVarietyNameChange} value={this.state.name}>
             { this.renderOptions() }
           </select>
       <div className="body"></div>
       <label htmlFor="seeds">Seeds: </label>          
-        <select id="seeds" onChange={this.handleSeedChange}>
+        <select id="seeds" onChange={this.handleSeedChange} value={this.state.seeds}>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -69,12 +65,7 @@ export class PlantNew extends Component {
             <option>10</option>
             <option>11</option>
             <option>12</option>
-          </select>
-          <div className="body"></div>        
-      <label htmlFor="roomId">Grow Room: </label>          
-        <select id="roomId" onChange={this.handleRoomChange}>
-            { this.renderRoomSelection() }
-          </select>  
+          </select>             
       <input type="submit" value="Create Cannabis Plant" className="btn" />
     </form>
     )
@@ -98,83 +89,9 @@ export class PlantNew extends Component {
 }
 
   renderOptions() {
-    return this.state.options.map(varietyName => (<option key= {varietyName}> {varietyName}</option>))  
+    return this.state.options.map(varietyName => (<option key= {varietyName}> {varietyName}</option>))
+
   }
-}
-
-handleRoomChange = event => {
-  this.setState({name: event.target.value})
-  if (event.target.value === 'Ghost Train Haze') {
-    this.setState({
-      roomId: 'Ghost Train Haze Room',
-    }, () => (this.setState({roomId: this.state.roomId}))) 
-} else if (event.target.value === 'Sour Diesel') {
-  this.setState({
-    roomId: 'Sour Diesel Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Sour Diesel') {
-  this.setState({
-    roomId: 'Sour Diesel Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Casey Jones') {
-  this.setState({
-    roomId: 'Casey Jones Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Blue Dream') {
-  this.setState({
-    roomId: 'Blue Dream Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Maui Wowie') {
-  this.setState({
-    roomId: 'Maui Wowie Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Strawberry Banana') {
-  this.setState({
-    roomId: 'Strawberry Banana Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Dark Star') {
-  this.setState({
-    roomId: 'Dark Star Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Kosher Kush') {
-  this.setState({
-    roomId: 'Kosher Kush Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Sunset Sherbert') {
-  this.setState({
-    roomId: 'Sunset Sherbert Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Northern Lights') {
-  this.setState({
-    roomId: 'Northern Lights Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Cannatonic') {
-  this.setState({
-    roomId: 'Cannatonic Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Three Blue Kings') {
-  this.setState({
-    roomId: 'Three Blue Kings Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'Larry Bird Kush') {
-  this.setState({
-    roomId: 'Larry Bird Kush Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-} else if (event.target.value === 'White Widow') {
-  this.setState({
-    roomId: 'White Widow Room',
-  }, () => (this.setState({roomId: this.state.roomId})))
-
-} else {
-  this.setState({
-    roomId: "Pineapple Express Room",
-  }, () => (this.setState({roomId: this.state.roomId})))    
-}
-}
-
-renderRoomSelection() {
-  return this.state.roomId  
-}
 }
 
 export default connect(null, { addPlant })(PlantNew)
