@@ -12,6 +12,9 @@ export class RoomShow extends Component {
     }
   }
 
+  componentDidMount(){
+    this.props.fetchRooms()
+}
 
   render() {
     const { name } = this.state.room;
