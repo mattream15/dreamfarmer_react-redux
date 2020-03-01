@@ -14,9 +14,9 @@ export const addPlant = plant => {
   }
 } 
 
-export const removePlant = plantId => {
+export const removePlant = (id) => {
   return (dispatch) => {
-    return fetch(`http://localhost:3000/plants/${plantId}`, {
+    return fetch(`http://localhost:3000/plants/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -39,6 +39,16 @@ export const removePlant = plantId => {
     }
   }
 
+  export const fetchPlant = (id) => {
+    return (dispatch) => {
+      return fetch(`http://localhost:3000/plants/${id}`)
+      .then(resp => resp.json())
+      .then(plant => {
+        dispatch({type: "SET_PLANT", payload: plant.id})
+      })
+    }
+  }
+
   export const addRoom = room => {
     return (dispatch) => {
       return fetch('http://localhost:3000/rooms', {
@@ -55,9 +65,9 @@ export const removePlant = plantId => {
     }
   } 
   
-  export const removeRoom = roomId => {
+  export const removeRoom = (id) => {
     return (dispatch) => {
-      return fetch(`http://localhost:3000/rooms/${roomId}`, {
+      return fetch(`http://localhost:3000/rooms/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -76,6 +86,16 @@ export const removePlant = plantId => {
         .then(resp => resp.json())
         .then(rooms => {
           dispatch({type: "SET_ROOMS", payload: rooms})
+        })
+      }
+    }
+
+    export const fetchRoom = (id) => {
+      return (dispatch) => {
+        return fetch(`http://localhost:3000/rooms/${id}`)
+        .then(resp => resp.json())
+        .then(room => {
+          dispatch({type: "SET_ROOM", payload: room.id})
         })
       }
     }

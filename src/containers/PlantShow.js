@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
+import PlantItem from '../components/PlantItem'
+import { connect } from 'react-redux'
+import { fetchPlant } from '../actions/index'
 
 export class PlantShow extends Component {
+  componentDidMount(){
+    this.props.fetchPlant(id)
+  }
+
   constructor(props) {
     super(props);
 
     let paramsId = parseInt(this.props.match.params.id, 10)
     let plant = props.plants.find( plant => plant.id === paramsId);
-
-    this.state = {
-      plant: plant ? plant : { species: 'N/A', name: 'N/A', seeds: 'N/A', roomId: 'N/A'}
-    }
   }
 
 
   render() {
-    const { species, name, seeds } = this.state.plant;
+    const { species, name, seeds } = this.props.plant
+    return (
+        <PlantItem plant={ plant } />
+    )
     return (
       <div>
         <h3>{ species }</h3>
@@ -25,8 +31,14 @@ export class PlantShow extends Component {
   }
 }
 
-export default PlantShow
+  const mapStateToProps = state => {
+    return {
+      plant: state.plant
+    }
+  }
 
+
+export default connect(mapStateToProps, { fetchPlant })(PlantShow)
 
 
 

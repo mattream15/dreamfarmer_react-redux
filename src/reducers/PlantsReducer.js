@@ -2,6 +2,8 @@ export default(state= [], action) => {
       switch(action.type){
         case "SET_PLANTS":
           return [...action.payload]
+        case "SET_PLANT":
+          return [...action.payload]
         case "ADD_PLANT":
           return [...state, action.payload]
         case "REMOVE_PLANT":

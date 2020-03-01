@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
+import RoomItem from '../components/RoomItem'
+import { connect } from 'react-redux'
+import { fetchRoom } from '../actions/index'
 
 export class RoomShow extends Component {
+    componentDidMount(){
+        this.props.fetchRoom(id)
+    }
+
   constructor(props) {
     super(props);
 
     let paramsId = parseInt(this.props.match.params.id, 10)
     let room = props.rooms.find( room => room.id === paramsId);
-
-    this.state = {
-      room: room ? room : { name: 'N/A'}
-    }
   }
 
-  componentDidMount(){
-    this.props.fetchRooms()
-}
+ 
 
   render() {
-    const { name } = this.state.room;
+    const room = this.props.room
+    return (
+        <RoomItem room={ room } />
+    )
     return (
       <div>
         <h3>{ name }</h3>
@@ -26,4 +30,11 @@ export class RoomShow extends Component {
   }
 }
 
-export default RoomShow
+  const mapStateToProps = state => {
+    return {
+      room: state.room
+    }
+  }
+
+
+export default connect(mapStateToProps, { fetchRoom })(RoomShow)
