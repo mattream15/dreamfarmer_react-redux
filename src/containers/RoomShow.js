@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import RoomItem from '../components/RoomItem'
 import { connect } from 'react-redux'
 import { fetchRoom } from '../actions/index'
+import { fetchRooms } from '../actions/index'
+import { addRoom } from '../actions/index'
+import { removeRoom } from '../actions/index'
 
 export class RoomShow extends Component {
-    componentDidMount(){
+    componentDidMount(id){
         this.props.fetchRoom(id)
     }
 
@@ -17,24 +20,32 @@ export class RoomShow extends Component {
 
  
 
-  render() {
-    const room = this.props.room
-    return (
-        <RoomItem room={ room } />
-    )
+  render(room) {
+    const name = this.props.room
     return (
       <div>
+        <RoomItem room={ room } />
         <h3>{ name }</h3>
       </div>
     )
   }
 }
 
-  const mapStateToProps = state => {
-    return {
-      room: state.room
+const mapDispatchToProps = dispatch => {
+  return {
+    addRoom: () => {
+      dispatch(addRoom())
+    },
+    removeRoom: (id) => {
+      dispatch(removeRoom(id))
+    },
+    fetchRoom: (id) => {
+      dispatch(fetchRoom(id))
+    },
+    fetchRooms: () => {
+      dispatch(fetchRooms())
     }
   }
-
-
-export default connect(mapStateToProps, { fetchRoom })(RoomShow)
+}
+    
+export default connect(mapDispatchToProps, { addRoom, removeRoom, fetchRoom, fetchRooms })(RoomShow)
