@@ -2,192 +2,29 @@ import React, { Component } from 'react'
 import PlantItem from '../components/PlantItem'
 import { connect } from 'react-redux'
 import { fetchPlant } from '../actions/index'
-import { fetchPlants } from '../actions/index'
-import { addPlant } from '../actions/index'
-import { removePlant } from '../actions/index'
-
 
 export class PlantShow extends Component {
   componentDidMount(id){
     this.props.fetchPlant(id)
   }
 
-  constructor(props) {
-    super(props);
-
-    let paramsId = parseInt(this.props.match.params.id, 10)
-    let plant = props.plants.find( plant => plant.id === paramsId);
-  }
-
-
-  render(plant) {
-    const { species, name, seeds } = this.props.plant
+  render() {
+    const plant  = this.props.plant
     return (
       <div>
+        <h3>Cannabis Plant</h3>
+        <ul className="body">
         <PlantItem plant={ plant } />
-        <h3>{ species }</h3>
-        <p>Variety Name: { name }</p>
-        <p>Number Of Seeds: { seeds }</p>
+        </ul>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    addPlant: () => {
-      dispatch(addPlant())
-    },
-    removePlant: (id) => {
-      dispatch(removePlant(id))
-    },
-    fetchPlant: (id) => {
-      dispatch(fetchPlant(id))
-    },
-    fetchPlants: () => {
-      dispatch(fetchPlants())
-    }
+    plant: state.plant
   }
 }
     
-
-export default connect(mapDispatchToProps, { addPlant, removePlant, fetchPlant, fetchPlants })(PlantShow)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default connect(mapStateToProps, { fetchPlant })(PlantShow)

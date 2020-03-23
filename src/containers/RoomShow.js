@@ -2,50 +2,29 @@ import React, { Component } from 'react'
 import RoomItem from '../components/RoomItem'
 import { connect } from 'react-redux'
 import { fetchRoom } from '../actions/index'
-import { fetchRooms } from '../actions/index'
-import { addRoom } from '../actions/index'
-import { removeRoom } from '../actions/index'
 
 export class RoomShow extends Component {
-    componentDidMount(id){
-        this.props.fetchRoom(id)
-    }
-
-  constructor(props) {
-    super(props);
-
-    let paramsId = parseInt(this.props.match.params.id, 10)
-    let room = props.rooms.find( room => room.id === paramsId);
+  componentDidMount(id){
+    this.props.fetchRoom(id)
   }
 
- 
-
-  render(room) {
-    const name = this.props.room
+  render() {
+    const room = this.props.room
     return (
       <div>
+        <h3>Grow Room</h3>
+        <ul className="body">
         <RoomItem room={ room } />
-        <h3>{ name }</h3>
+        </ul>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    addRoom: () => {
-      dispatch(addRoom())
-    },
-    removeRoom: (id) => {
-      dispatch(removeRoom(id))
-    },
-    fetchRoom: (id) => {
-      dispatch(fetchRoom(id))
-    },
-    fetchRooms: () => {
-      dispatch(fetchRooms())
-    }
+    room: state.room
   }
 }
-    
-export default connect(mapDispatchToProps, { addRoom, removeRoom, fetchRoom, fetchRooms })(RoomShow)
+
+export default connect(mapStateToProps, { fetchRoom })(RoomShow)
