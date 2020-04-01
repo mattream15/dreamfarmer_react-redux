@@ -5,10 +5,14 @@ import { fetchRoom } from '../actions/index'
 
 export class RoomShow extends Component {
   componentDidMount(id){
+    console.log('id is', id)
     this.props.fetchRoom(id)
   }
 
   render() {
+    if (!this.props.room) {
+      return null
+    }
     const room = this.props.room
     return (
       <div>
@@ -22,6 +26,7 @@ export class RoomShow extends Component {
 }
 
 const mapStateToProps = state => {
+  debugger
   return {
     room: state.room
   }

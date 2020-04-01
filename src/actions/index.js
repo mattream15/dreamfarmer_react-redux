@@ -92,7 +92,7 @@ export const removePlant = (id) => {
 
     export const fetchRoom = (id) => {
       return (dispatch) => {
-        return fetch(`http://localhost:3000/rooms/${id}`)
+        return fetch(`http://localhost:3000/rooms/1`)
         .then(resp => resp.json())
         .then(room => {
           dispatch({type: "SET_ROOM", payload: room.id})

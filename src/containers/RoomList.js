@@ -9,6 +9,9 @@ export class RoomList extends Component {
   }
 
   render() {
+    if (!this.props.rooms) {
+      return null
+    }
     const rooms = this.props.rooms.map(( room, i ) => <RoomItem key={i} room={ room } />)
     return (
       <div>

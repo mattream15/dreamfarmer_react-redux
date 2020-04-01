@@ -15,23 +15,6 @@
 //       return state
 //   }
 // }
-function createStore(changeState) {
-  let state;
-
-function dispatch(action){
-  state = changeState(state, action)
-  render()
-}
-
-function getState() {
-  return state;
-}
-
-  return {
-    dispatch,
-    getState
-  };
-};
  
 function changeState(state = [], action){
   switch(action.type){
@@ -51,10 +34,4 @@ function changeState(state = [], action){
   }
 }
 
-function render() {
-  let container = document.getElementById('container');
-  container.textContent = store.getState();
-};
- 
-let store = createStore(changeState) // createStore takes the reducer reducer as an argument
-store.dispatch({ type: '@@INIT' });
+export default changeState
