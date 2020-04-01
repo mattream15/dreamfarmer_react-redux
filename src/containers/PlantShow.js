@@ -9,6 +9,9 @@ export class PlantShow extends Component {
   }
 
   render() {
+    if (!this.props.plant) {
+      return null
+    }
     const plant  = this.props.plant
     return (
       <div>

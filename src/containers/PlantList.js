@@ -9,6 +9,9 @@ export class PlantList extends Component {
   }
 
   render() {
+    if (!this.props.plants) {
+      return null
+    }
     const plants = this.props.plants.map(( plant, i ) => <PlantItem key={i} plant={ plant } />)
     return (
       <div>
