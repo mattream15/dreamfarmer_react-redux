@@ -16,22 +16,20 @@
 //   }
 // }
  
-function changeState(state = [], action){
+export function roomsReducer (state = [], action){
   switch(action.type){
     case "SET_ROOMS":
-      return state = [...action.payload]
+      return [...action.payload]
     case "SET_ROOM":
-      return state = [...action.payload]
+  
+      return [...action.payload]
     case "ADD_ROOM":
-      return state = [...state, action.payload]
+      return [...state, action.payload]
     case "REMOVE_ROOM":
-      let newRooms = state.filter(room => room.id !== action.payload)
-      return state = {...newRooms}
+      return state.filter(room => room.id !== action.payload)
     //case "EDIT_ROOM"
     //find the cannabis plant id, make edits, return the cannabis plant
     default:
       return state
   }
 }
-
-export default changeState

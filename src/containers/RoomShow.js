@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import { fetchRoom } from '../actions/index'
 
 export class RoomShow extends Component {
-  componentDidMount(id){
-    console.log('id is', id)
-    this.props.fetchRoom(id)
+  componentDidMount(){
+    console.log(this.props)
+    //this.props.fetchRoom(id)
   }
 
   render() {
@@ -26,7 +26,7 @@ export class RoomShow extends Component {
 }
 
 const mapStateToProps = state => {
-  debugger
+  //debugger
   return {
     room: state.room
   }

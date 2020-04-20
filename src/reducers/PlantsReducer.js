@@ -16,7 +16,7 @@
 //     }
 //   }
 
-  function changeState(state = [], action){
+  export default function (state = [], action){
     switch(action.type){
       case "SET_PLANTS":
         return state = [...action.payload]
@@ -33,5 +33,3 @@
         return state
     }
   }
-  
-  export default changeState
