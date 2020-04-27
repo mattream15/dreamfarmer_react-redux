@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
 import RoomItem from '../components/RoomItem'
-import { connect } from 'react-redux'
-import { fetchRoom } from '../actions/index'
 
 export class RoomShow extends Component {
-  componentDidMount(){
-    console.log(this.props)
-    //this.props.fetchRoom(id)
-  }
-
   render() {
     if (!this.props.room) {
       return null
@@ -25,11 +18,4 @@ export class RoomShow extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  //debugger
-  return {
-    room: state.room
-  }
-}
-
-export default connect(mapStateToProps, { fetchRoom })(RoomShow)
+export default (RoomShow)

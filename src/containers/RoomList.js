@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import RoomItem from '../components/RoomItem'
 import { connect } from 'react-redux'
-import { fetchRooms } from '../actions/index'
 
 export class RoomList extends Component {
-  componentDidMount(){
-    this.props.fetchRooms()
-  }
-
   render() {
     if (!this.props.rooms) {
       return null
@@ -31,4 +26,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { fetchRooms })(RoomList)
+export default connect(mapStateToProps)(RoomList)
