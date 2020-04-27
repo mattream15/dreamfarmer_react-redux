@@ -44,7 +44,7 @@ export const removePlant = (id) => {
       return fetch(`http://localhost:3000/plants/${id}`)
       .then(resp => resp.json())
       .then(plant => {
-        dispatch({type: "SET_PLANT", payload: plant.id})
+        dispatch({type: "SET_PLANT", payload: plant})
       })
     }
   }

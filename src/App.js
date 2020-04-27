@@ -7,27 +7,32 @@ import PlantList from './containers/PlantList';
 import PlantShow from './containers/PlantShow';
 import RoomList from './containers/RoomList';
 import RoomShow from './containers/RoomShow';
+import { connect } from 'react-redux'
+import { fetchPlants } from './actions/index'
 
 
 class App extends Component {
   
-  constructor() {
-    super()
+  // constructor() {
+  //   super()
 
-     this.state = {
-       id: 0,
-       cannabisPlants: []
-    }
+  //    this.state = {
+  //      id: 0,
+  //      plants: []
+  //   }
+  // }
+
+  // addPlant = plant => {
+  //    plant.id = this.state.id + 1
+
+  //    this.setState({
+  //      plants: [...this.state.plants, plant],
+  //      id: this.state.id + 1
+  //    })
+  //  }
+  componentDidMount(){
+    this.props.fetchPlants()
   }
-
-  addPlant = plant => {
-     plant.id = this.state.id + 1
-
-     this.setState({
-       plants: [...this.state.plants, plant],
-       id: this.state.id + 1
-     })
-   }
   
  render() {
    return (
@@ -36,15 +41,22 @@ class App extends Component {
        <div className="App">
         <Switch>
           <Route exact path="/" component={ Home } />
-          <Route exact path="/plants/new" render={ props => <PlantNew {...props} addPlant={this.addPlant}/>} />
+          <Route exact path="/plants/new" render={ routerProps => <PlantNew {...routerProps} addPlant={this.addPlant}/>} />
           <Route exact path="/plants" component={ PlantList } />
-          <Route exact path="/plants/:id" render={ props => <PlantShow {...props} plants={this.state.plants}/>} />
+          <Route exact path="/plants/:id" render={ routerProps => <PlantShow {...routerProps} plant={this.props.plants.find(plant => plant.id === parseInt(routerProps.match.params.id))}/>} />
           <Route exact path="/rooms" component={ RoomList } />
-          <Route exact path="/rooms/:id" render={ props => <RoomShow {...props} rooms={this.state.rooms}/>} />
+          <Route exact path="/rooms/:id" render={ routerProps => <RoomShow {...routerProps} rooms={this.state.rooms}/>} />
         </Switch>
        </div>
      </Router>
    )
  }
 }
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    plants: state.plants
+  }
+}
+
+export default connect(mapStateToProps, { fetchPlants })(App)

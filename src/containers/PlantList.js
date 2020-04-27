@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import PlantItem from '../components/PlantItem'
 import { connect } from 'react-redux'
-import { fetchPlants } from '../actions/index'
 
-export class PlantList extends Component {
-  componentDidMount(){
-    this.props.fetchPlants()
-  }
+class PlantList extends Component {
 
   render() {
     if (!this.props.plants) {
@@ -31,4 +27,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { fetchPlants })(PlantList)
+export default connect(mapStateToProps)(PlantList)

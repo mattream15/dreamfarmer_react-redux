@@ -21,7 +21,7 @@
       case "SET_PLANTS":
         return state = [...action.payload]
       case "SET_PLANT":
-        return state = [...action.payload]
+        return state = [action.payload]
       case "ADD_PLANT":
         return state = [...state, action.payload]
       case "REMOVE_PLANT":
