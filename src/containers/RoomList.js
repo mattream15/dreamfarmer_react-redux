@@ -10,6 +10,7 @@ export class RoomList extends Component {
     const rooms = this.props.rooms.map(( room, i ) => <RoomItem key={i} room={ room } />)
     return (
       <div>
+        <h1 className="body"><center>DreamFarmer</center></h1><br/>
         <h3>Grow Room List</h3>
         <ul className="body">
           { rooms }

@@ -11,6 +11,7 @@ class PlantList extends Component {
     const plants = this.props.plants.map(( plant, i ) => <PlantItem key={i} plant={ plant } />)
     return (
       <div>
+        <h1 className="body"><center>DreamFarmer</center></h1><br/>
         <h3>Cannabis Plant List</h3>
         <ul className="body">
           { plants }

@@ -6,10 +6,11 @@ export class NavBar extends Component {
     return (
       <nav className="indigo darken-3">
         <div className="container">
-          <NavLink to="/" className="brand-logo">DreamFarmer</NavLink>
           <ul className="right">
+          <li><NavLink to="/" className="brand-logo">Home</NavLink></li>
             <li><NavLink to="/plants/new">Create Cannabis Plants</NavLink></li>
             <li><NavLink to="/plants">Cannabis Plants List</NavLink></li>
+            <li><NavLink to="/rooms">Grow Rooms List</NavLink></li>    
           </ul>
         </div>
       </nav>
