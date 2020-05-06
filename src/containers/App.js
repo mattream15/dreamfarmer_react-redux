@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './containers/Home';
-import PlantNew from './containers/PlantNew';
-import NavBar from './components/NavBar';
-import PlantList from './containers/PlantList';
-import PlantShow from './containers/PlantShow';
-import RoomList from './containers/RoomList';
-import RoomShow from './containers/RoomShow';
+import Home from './Home'
+import PlantNew from './PlantNew'
+import NavBar from '../components/NavBar';
+import PlantList from './PlantList'
+import PlantShow from './PlantShow'
+import RoomList from './RoomList'
+import RoomShow from './RoomShow'
 import { connect } from 'react-redux'
-import { fetchPlants } from './actions/index'
-import { fetchRooms } from './actions/index'
-
-
+import { fetchPlants } from '../actions/index'
+import { fetchRooms } from '../actions/index'
 
 class App extends Component {
   

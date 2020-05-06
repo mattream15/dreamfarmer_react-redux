@@ -21,7 +21,6 @@ export function roomsReducer (state = [], action){
     case "SET_ROOMS":
       return [...action.payload]
     case "SET_ROOM":
-  
       return [...action.payload]
     case "ADD_ROOM":
       return [...state, action.payload]
