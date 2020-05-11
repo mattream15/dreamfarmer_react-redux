@@ -17,7 +17,7 @@ export class PlantNew extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.addPlant ( this.state )
+    this.props.addPlant(this.state)
     this.setState(INITIAL_STATE)
     this.props.history.push('/plants');
     

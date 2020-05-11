@@ -19,14 +19,13 @@
   export default function (state = [], action){
     switch(action.type){
       case "SET_PLANTS":
-        return state = [...action.payload]
+        return [...action.payload]
       case "SET_PLANT":
-        return state = [action.payload]
+        return [action.payload]
       case "ADD_PLANT":
-        return state = [...state, action.payload]
+        return [...state, action.payload]
       case "REMOVE_PLANT":
-        let newPlants = state.filter(plant => plant.id !== action.payload)
-        return state = {...newPlants}
+        return state.filter(plant => plant.id !== action.payload)
       //case "EDIT_PLANT"
       //find the cannabis plant id, make edits, return the cannabis plant
       default:
