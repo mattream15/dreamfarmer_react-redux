@@ -8,7 +8,6 @@ class PlantList extends Component {
     if (!this.props.plants) {
       return null
     }
-    console.log("hello world", this.props.plants)
     const plants = this.props.plants.map(( plant, i ) => <PlantItem key={i} plant={ plant } />)
     return (
       <div>

@@ -65,21 +65,6 @@ export const removePlant = (id) => {
     }
   } 
   
-  export const removeRoom = (id) => {
-    return (dispatch) => {
-      return fetch(`http://localhost:3000/rooms/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(resp => resp.json())
-      .then(room => {
-        dispatch({type: "REMOVE_ROOM", payload: room.id})
-      })
-    }
-  }
-  
     export const fetchRooms = () => {
       return (dispatch) => {
         return fetch('http://localhost:3000/rooms')
