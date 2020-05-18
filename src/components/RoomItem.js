@@ -6,6 +6,7 @@ const RoomItem = ({ room }) => {
     return (
     <li className="collection-item">
       <Link to= {`/rooms/${room.id}`} >Location: {room.name} </Link><br />
+      { room.plants.map(plant => <p>Name: {plant.id}</p>)}
     </li>
     );
 }
