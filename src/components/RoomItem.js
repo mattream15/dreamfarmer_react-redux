@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const RoomItem = ({ room }) => {
     return (
-    <li className="collection-item">
-      <Link to= {`/rooms/${room.id}`} >Location: {room.name} </Link><br />
-      { room.plants.map(plant => <p>Name: {plant.id}</p>)}
-    </li>
+      <div id="parent">
+        <div id="div1"><li><Link to= {`/rooms/${room.id}`} >Location: {room.name} </Link></li></div>
+        <div id="div1"><li>{room.plants.map(plant =><Link to= {`/plants/${plant.id}`} >ID: {plant.id}) </Link></li></div>
+      </div>
     );
 }
 
