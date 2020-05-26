@@ -22,6 +22,18 @@ export function roomsReducer (state = [], action){
       return [...action.payload]
     case "SET_ROOM":
       return [...action.payload]
+    case "ADD_PLANT":
+      return state.map(room => {
+        if (room.id === action.payload.room.id) { 
+          return { 
+            ...room,
+            plants: [...room.plants, action.payload] 
+           }
+        }
+        else {
+          return room
+        }
+      })
     case "ADD_ROOM":
       return [...state, action.payload]
     case "REMOVE_ROOM":

@@ -13,23 +13,6 @@ import { fetchRooms } from '../actions/index'
 
 class App extends Component {
   
-  // constructor() {
-  //   super()
-
-  //    this.state = {
-  //      id: 0,
-  //      plants: []
-  //   }
-  // }
-
-  // addPlant = plant => {
-  //    plant.id = this.state.id + 1
-
-  //    this.setState({
-  //      plants: [...this.state.plants, plant],
-  //      id: this.state.id + 1
-  //    })
-  //  }
   componentDidMount(){
     this.props.fetchPlants()
     this.props.fetchRooms()
