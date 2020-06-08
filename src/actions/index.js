@@ -1,4 +1,5 @@
 export const addPlant = plant => {
+  console.log(6)
   return (dispatch) => {
     return fetch('http://localhost:3000/plants', {
       method: 'POST',
@@ -10,8 +11,11 @@ export const addPlant = plant => {
     .then(resp => resp.json())
     .then(plant => {
       dispatch({type: "ADD_PLANT", payload: plant})
+      console.log(7)
     })
+    console.log(8)
   }
+  console.log(9)
 } 
 
 export const removePlant = (id) => {

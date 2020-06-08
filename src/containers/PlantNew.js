@@ -16,9 +16,12 @@ export class PlantNew extends Component {
   }
 
   handleSubmit = event => {
+    console.log(2)
     event.preventDefault();
     this.props.addPlant(this.state)
+    console.log(3)
     this.setState(INITIAL_STATE)
+    console.log(4)
     this.props.history.push('/plants');
     
   }
@@ -35,6 +38,7 @@ export class PlantNew extends Component {
   }
 
   render() {
+    console.log(5)
     return (
       <form onSubmit={ this.handleSubmit }>
       <h3>Create Cannabis Plant</h3>

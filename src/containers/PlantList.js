@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 class PlantList extends Component {
 
   render() {
+    console.log(11)
     if (!this.props.plants) {
       return null
     }

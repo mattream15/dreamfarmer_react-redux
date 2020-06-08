@@ -19,6 +19,7 @@ class App extends Component {
   }
   
  render() {
+   console.log(1)
    return (
      <Router>
        <NavBar />

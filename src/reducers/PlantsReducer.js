@@ -17,6 +17,7 @@
 //   }
 
   export default function (state = [], action){
+    console.log(10)
     switch(action.type){
       case "SET_PLANTS":
         return [...action.payload]
